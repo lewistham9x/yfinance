@@ -46,14 +46,14 @@ def empty_df(index=[]):
 
 def get_html(url, proxy=None, session=None):
     session = session or _requests
-    html = session.get(url=url, proxies=proxy, headers=user_agent_headers).text
+    html = session.get(url=url, proxies=proxy, headers=user_agent_headers, timeout=(2,5)).text
     return html
 
 
 def get_json(url, proxy=None, session=None):
 
     session = session or _requests
-    html = session.get(url=url, proxies=proxy, headers=user_agent_headers).text
+    html = session.get(url=url, proxies=proxy, headers=user_agent_headers, timeout=(2,5)).text
 
     if "QuoteSummaryStore" not in html:
         html = session.get(url=url, proxies=proxy).text
