@@ -153,7 +153,8 @@ class TickerBase():
             url=url,
             params=params,
             proxies=proxy,
-            headers=utils.user_agent_headers
+            headers=utils.user_agent_headers,
+            timeout=(2,5)
         )
         if "Will be right back" in data.text:
             raise RuntimeError("*** YAHOO! FINANCE IS CURRENTLY DOWN! ***\n"
@@ -594,7 +595,8 @@ class TickerBase():
         data = self.session.get(
             url=url,
             proxies=proxy,
-            headers=utils.user_agent_headers
+            headers=utils.user_agent_headers,
+            timeout=(2,5)
         ).text
 
         search_str = '"{}|'.format(ticker)
